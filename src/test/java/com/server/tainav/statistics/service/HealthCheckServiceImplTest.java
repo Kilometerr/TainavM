@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = HealthCheckServiceImpl.class)
@@ -35,11 +35,8 @@ public class HealthCheckServiceImplTest {
         when(statisticsRepository.checkConnection()).thenReturn(false);
 
         // When & Then
-        try {
-            healthCheckService.checkHealth();
-            fail("Expected HealthCheckException to be thrown");
-        } catch (HealthCheckException e) {
-            assertEquals("Database connection failed", e.getMessage());
-        }
+        HealthCheckException exception = assertThrows(HealthCheckException.class,
+                () -> healthCheckService.checkHealth());
+        assertEquals("Database connection failed", exception.getMessage());
     }
 }

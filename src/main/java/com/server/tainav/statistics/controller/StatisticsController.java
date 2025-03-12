@@ -25,6 +25,9 @@ public class StatisticsController {
         } catch (HealthCheckException e) {
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
                     .body(new HealthResponse(false, e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new HealthResponse(false, "Unexpected error during health check"));
         }
     }
 }
