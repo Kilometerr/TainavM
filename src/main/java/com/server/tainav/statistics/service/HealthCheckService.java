@@ -1,8 +1,8 @@
 package com.server.tainav.statistics.service;
 
-import org.springframework.stereotype.Service;
+import com.server.tainav.statistics.exception.HealthCheckException;
 
 public interface HealthCheckService {
 
-    boolean checkHealth();
+    void checkHealth() throws HealthCheckException;
 }
