@@ -18,7 +18,7 @@ public class StatisticsController {
     HealthCheckService healthCheckService;
 
     @GetMapping("/life")
-    private ResponseEntity<?> checkHealth() {
+    public ResponseEntity<?> checkHealth() {
         try {
             healthCheckService.checkHealth();
             return ResponseEntity.ok().body(new HealthResponse(true, "All systems operational"));

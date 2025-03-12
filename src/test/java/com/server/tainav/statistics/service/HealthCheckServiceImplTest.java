@@ -4,14 +4,14 @@ import com.server.tainav.statistics.exception.HealthCheckException;
 import com.server.tainav.statistics.repository.StatisticsRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.when;
 
-@WebMvcTest(HealthCheckServiceImpl.class)
+@SpringBootTest(classes = HealthCheckServiceImpl.class)
 public class HealthCheckServiceImplTest {
 
     @MockitoBean

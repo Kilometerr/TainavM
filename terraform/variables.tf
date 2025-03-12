@@ -3,7 +3,8 @@ variable "db_name" {
 }
 
 variable "db_username" {
-  default = "Kilo"
+  default   = "Kilo"
+  sensitive = true
 }
 
 variable "db_instance_class" {
